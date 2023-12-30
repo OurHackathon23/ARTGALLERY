@@ -174,7 +174,7 @@ body{
     height: 60%;
     background-color: #ffffff;
     color: white;
-    border-radius:10px ;
+    border-radius:37px ;
     z-index: 3;
     border: 2px solid black;
 }
@@ -343,5 +343,10 @@ body{
   .main_container .login_container a{
     text-decoration: none;
     color:#fff;
+  }
+  .forget_pass{
+    text-decoration: none;
+    color: green;
+    margin-top: 20px;
   }
  

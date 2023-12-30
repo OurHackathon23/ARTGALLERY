@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Random Image Grid</title>
   <link rel="stylesheet" href="assest/css/styles.css">
+  
   <link rel="stylesheet" href="assest/font/fontawesome-free-6.4.2-web/css/all.min.css">
 
   <style>
@@ -168,16 +169,16 @@
                     <i class="fa-solid fa-plus fa-2xl" style="color:rgb(25, 98, 122);"></i>
                 </button>
             </div> 
-            <!--
+            
             <div id="openBtn"> 
                 <div class="Profile">
-                    <a href="login.php"><img src="assest/img/profile.png" alt="profile_img"></a>
+                    <a href="user_profile.html"><img src="assest/img/profile.png" alt="profile_img"></a>
                 </div>
-            </div> -->
-            <div class="main_container">
-            <div class="signup_container"><h4 class="sh4"><a href="signup.html">SIGN UP</a></h4></div>
-            <div class="login_container"><h4 class="lh4"><a href="login.html"> LOGIN</a></h4></div>
-            </div>
+            </div> 
+            
+
+            
+
             
           
             <div class="manu" id="menu-button">
@@ -223,37 +224,38 @@
   <div class="s">
     <button class="load-random " id="load-random">New Images</button>
     
-    <button class="load-random" id="nature">Nature</button>
+    <button class="load-random " id="load-random">Nature</button>
     
-    <button class="load-random " id="architecture">Architecture</button>
+    <button class="load-random " id="load-random">Architecture</button>
     
-    <button class="load-random " id="people">People</button>
+    <button class="load-random " id="load-random">People</button>
     <p class="s-1">  |  </p>
-    <button class="load-random " id="lifestyle">Lifestyle</button>
+    <button class="load-random " id="load-random">Lifestyle</button>
     
-    <button class="load-random " id="sports">Sports</button>
+    <button class="load-random " id="load-random">Sports</button>
     
-    <button class="load-random " id="cars">Cars</button>
+    <button class="load-random " id="load-random">Cars</button>
 
-    <button class="load-random " id="Street Photography">Street Photography</button>
+    <button class="load-random " id="load-random">Phone wallpaper</button>
     
-    <button class="load-random " id="bikes">Bikes</button>
+    <button class="load-random " id="load-random">Bikes</button>
     
-    <button class="load-random " id="birds">Birds</button>
+    <button class="load-random " id="load-random">Birds</button>
     
-    <button class="load-random " id="horse">Horse</button>
+    <button class="load-random " id="load-random">Houses</button>
 
-    <button class="load-random " id="3D-modal">3D Modal</button>
+    <button class="load-random " id="load-random">Bikes</button>
 
-    <button class="load-random " id="travel">Travel</button>
+    <button class="load-random " id="load-random">Bikes</button>
     
-    <button class="load-random " id="indian-Culture">Indian Culture</button>
+    <button class="load-random " id="load-random">Birds</button>
     
-    <button class="load-random " id="Houses">Houses</button>
+    <button class="load-random " id="load-random">Houses</button>
     
   </div>
 
-  <div class="image-grid" id="image-grid"></div>
+  <div class="image-grid" id="image-grid">  </div>
+
 
   <div class="modal" id="image-modal">
     <div class="modal-content">
@@ -263,142 +265,144 @@
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const imageGrid = document.getElementById("image-grid");
-      const loadRandomButtons = document.querySelectorAll(".load-random");
-      const imageModal = document.getElementById("image-modal");
-      const modalContent = document.querySelector(".modal-content");
-      const modalImage = document.getElementById("modal-image");
-      const backButton = document.getElementById("back-button");
-      const downloadButton = document.getElementById("download-button");
-      let page = 1;
-      let selectedCategory = "";
-      const loadedImages = new Set();
-    
-      function getRandomImageUrl(category = "") {
-        let apiUrl = `https://source.unsplash.com/random/800x600`;
-    
-        if (category) {
-          apiUrl += `?${category}`;
-        }
-    
-        // Add a timestamp to ensure unique images
-        apiUrl += `&timestamp=${Date.now()}`;
-    
-        return apiUrl;
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const imageGrid = document.getElementById("image-grid");
+    const loadRandomButton = document.getElementById("load-random");
+    const categorySelector = document.getElementById("category-selector");
+    const imageModal = document.getElementById("image-modal");
+    const modalContent = document.querySelector(".modal-content");
+    const modalImage = document.getElementById("modal-image");
+    const backButton = document.getElementById("back-button");
+    const downloadButton = document.getElementById("download-button");
+    let page = 1;
+    let selectedCategory = "";
+    const loadedImages = [];
+
+    function getRandomImageUrl(category = "") {
+      let apiUrl = `https://source.unsplash.com/random/800x600`;
+
+      if (category) {
+        apiUrl += `?${category}`;
       }
-    
-      function displayImage(imageUrl) {
-        const imageElement = document.createElement("img");
-        imageElement.src = imageUrl;
-        imageElement.alt = "Unsplash Image";
-        imageGrid.appendChild(imageElement);
-        loadedImages.add(imageUrl);
-    
-        // Add click event listener to open the modal on image click
-        imageElement.addEventListener("click", () => {
-          openModal(imageUrl);
-        });
-      }
-    
-      function loadMoreImages(category) {
-        const numImagesToLoad = 30; // Adjust the number of images as needed
-        let loadedCount = 0;
-    
-        while (loadedCount < numImagesToLoad) {
-          let imageUrl = getRandomImageUrl(category);
-          if (!loadedImages.has(imageUrl)) {
-            displayImage(imageUrl);
-            loadedCount++;
-            page++;
-          }
-        }
-      }
-    
-      function loadImagesByCategory(category) {
-        imageGrid.innerHTML = ""; // Clear grid before loading new images
-        loadedImages.clear(); // Reset loaded images Set
-        page = 1; // Reset page counter
-        loadMoreImages(category);
-      }
-    
-      function isNearBottomOfPage() {
-        return (
-          window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 500 // Adjust threshold as needed
-        );
-      }
-    
-      function handleScroll() {
-        if (isNearBottomOfPage()) {
-          loadMoreImages(selectedCategory);
-        }
-      }
-    
-      function openModal(imageUrl) {
-        modalImage.src = imageUrl;
-        imageModal.style.display = "flex";
-    
-        // Reset scroll position when opening the modal
-        modalContent.scrollTop = 0;
-      }
-    
-      function closeModal() {
-        imageModal.style.display = "none";
-      }
-    
-      function downloadImage(imageUrl) {
-        const timestamp = new Date().getTime();
-        const filename = `image_${timestamp}.jpg`;
-    
-        fetch(imageUrl)
-          .then((response) => response.blob())
-          .then((blob) => {
-            const link = document.createElement("a");
-            link.href = window.URL.createObjectURL(blob);
-            link.download = filename;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          })
-          .catch((error) => console.error('Error downloading image:', error));
-      }
-    
-      // Close modal when clicking outside the image
-      imageModal.addEventListener("click", (event) => {
-        if (event.target === imageModal) {
-          closeModal();
-        }
+
+      // Add a timestamp to ensure unique images
+      apiUrl += `&timestamp=${Date.now()}`;
+
+      return apiUrl;
+    }
+
+    function displayImage(imageUrl) {
+      const imageElement = document.createElement("img");
+      imageElement.src = imageUrl;
+      imageElement.alt = "Unsplash Image";
+      imageGrid.appendChild(imageElement);
+      loadedImages.push(imageUrl);
+
+      // Add click event listener to open the modal on image click
+      imageElement.addEventListener("click", () => {
+        openModal(imageUrl);
       });
-    
-      // Go back to the image grid when clicking the back button
-      backButton.addEventListener("click", () => {
+    }
+
+    function loadMoreImages() {
+      const numImagesToLoad = 25; // Adjust the number of images as needed
+
+      for (let i = 0; i < numImagesToLoad; i++) {
+        let imageUrl;
+        do {
+          imageUrl = getRandomImageUrl(selectedCategory);
+        } while (loadedImages.includes(imageUrl));
+
+        displayImage(imageUrl);
+        page++;
+      }
+    }
+
+    function loadRandomImages() {
+      imageGrid.innerHTML = ""; // Clear grid before loading new images
+      loadedImages.length = 0; // Reset loaded images array
+      page = 1; // Reset page counter
+      selectedCategory = categorySelector.value;
+      loadMoreImages();
+    }
+
+    function isBottomOfPage() {
+      return window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    }
+
+    function handleScroll() {
+      if (isBottomOfPage()) {
+        loadMoreImages();
+      }
+    }
+
+    function openModal(imageUrl) {
+      modalImage.src = imageUrl;
+      imageModal.style.display = "flex";
+
+      // Reset scroll position when opening the modal
+      modalContent.scrollTop = 0;
+    }
+
+    function closeModal() {
+      imageModal.style.display = "none";
+    }
+
+
+    function downloadImage(imageUrl) {
+      const timestamp = new Date().getTime();
+      const filename = `image_${timestamp}.jpg`;
+
+      fetch(imageUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        })
+        .catch(error => console.error('Error downloading image:', error));
+    }
+
+
+    // Close modal when clicking outside the image
+    imageModal.addEventListener("click", (event) => {
+      if (event.target === imageModal) {
         closeModal();
-      });
-    
-      // Download the image when clicking the download button
-      downloadButton.addEventListener("click", () => {
-        const imageUrl = modalImage.src;
-        downloadImage(imageUrl);
-      });
-    
-      // Event listeners for each category button
-      loadRandomButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          selectedCategory = button.id;
-          loadImagesByCategory(selectedCategory);
-        });
-      });
-    
-      // Initial load
-      loadImagesByCategory(selectedCategory);
-    
-      // Scroll event listener for infinite scroll
-      window.addEventListener('scroll', handleScroll);
+      }
     });
-    
-  </script>
+
+    // Go back to the image grid when clicking the back button
+    backButton.addEventListener("click", () => {
+      closeModal();
+    });
+
+    // Download the image when clicking the download button
+    downloadButton.addEventListener("click", () => {
+      const imageUrl = modalImage.src;
+      downloadImage(imageUrl);
+    });
+
+    // Initial load
+    loadMoreImages();
+
+    // Event listeners
+    loadRandomButton.addEventListener("click", loadRandomImages);
+    categorySelector.addEventListener("change", () => {
+      imageGrid.innerHTML = ""; // Clear grid before loading new images
+      loadedImages.length = 0; // Reset loaded images array
+      page = 1; // Reset page counter
+      selectedCategory = categorySelector.value;
+      loadMoreImages();
+    });
+
+    // Infinite scroll
+    window.onscroll = handleScroll;
+  });
+</script>
 
 </body>
 </html>
