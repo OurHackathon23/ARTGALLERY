@@ -180,10 +180,6 @@
             <div class="login_container"><h4 class="lh4"><a href="login.html"> LOGIN</a></h4></div>
             </div>
 
-            
-
-            
-          
             <div class="manu" id="menu-button">
               <button>
                   <i class="fa-solid fa-bars fa-2xl" style="color: #000000;"></i>
@@ -338,7 +334,7 @@
 
     function handleScroll() {
       if (isBottomOfPage()) {
-        loadMoreImages();
+        loadMoreImages(selectedCategory);
       }
     }
 
@@ -353,7 +349,6 @@
     function closeModal() {
       imageModal.style.display = "none";
     }
-
 
     function downloadImage(imageUrl) {
       const timestamp = new Date().getTime();
