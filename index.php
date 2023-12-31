@@ -139,7 +139,7 @@
     <div class="header">
 
         <div class="header_left">
-            <a href="Home.html"><img  src="assest/img/logo.png" alt="logo"></a>
+            <a href="index.html"><img  src="assest/img/logo.png" alt="logo"></a>
             
         </div>
 
@@ -251,7 +251,11 @@
 
     <button class="load-random " id="load-random">Bikes</button>
     
+<<<<<<< Updated upstream:index.php
     <button class="load-random " id="load-random">Birds</button>
+=======
+    <button class="load-random " id="indian-Culture-temple">Indian Culture</button>
+>>>>>>> Stashed changes:index.html
     
     <button class="load-random " id="load-random">Houses</button>
     
@@ -288,6 +292,7 @@
       if (category) {
         apiUrl += `?${category}`;
       }
+<<<<<<< Updated upstream:index.php
 
       // Add a timestamp to ensure unique images
       apiUrl += `&timestamp=${Date.now()}`;
@@ -305,6 +310,90 @@
       // Add click event listener to open the modal on image click
       imageElement.addEventListener("click", () => {
         openModal(imageUrl);
+=======
+    
+      function displayImage(imageUrl) {
+        const imageElement = document.createElement("img");
+        imageElement.src = imageUrl;
+        imageElement.alt = "Unsplash Image";
+        imageGrid.appendChild(imageElement);
+        loadedImages.add(imageUrl);
+    
+        // Add click event listener to open the modal on image click
+        imageElement.addEventListener("click", () => {
+          openModal(imageUrl);
+        });
+      }
+    
+      function loadMoreImages(category) {
+        const numImagesToLoad = 15; // Adjust the number of images as needed
+        let loadedCount = 0;
+    
+        while (loadedCount < numImagesToLoad) {
+          let imageUrl = getRandomImageUrl(category);
+          if (!loadedImages.has(imageUrl)) {
+            displayImage(imageUrl);
+            loadedCount++;
+            page++;
+          }
+        }
+      }
+    
+      function loadImagesByCategory(category) {
+        imageGrid.innerHTML = ""; // Clear grid before loading new images
+        loadedImages.clear(); // Reset loaded images Set
+        page = 1; // Reset page counter
+        loadMoreImages(category);
+      }
+    
+      function isNearBottomOfPage() {
+        return (
+          window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 500 // Adjust threshold as needed
+        );
+      }
+    
+      function handleScroll() {
+        if (isNearBottomOfPage()) {
+          loadMoreImages(selectedCategory);
+        }
+      }
+    
+      function openModal(imageUrl) {
+        modalImage.src = imageUrl;
+        imageModal.style.display = "flex";
+    
+        // Reset scroll position when opening the modal
+        modalContent.scrollTop = 0;
+      }
+    
+      function closeModal() {
+        imageModal.style.display = "none";
+      }
+    
+      function downloadImage(imageUrl) {
+        const timestamp = new Date().getTime();
+        const filename = `image_${timestamp}.jpg`;
+    
+        fetch(imageUrl)
+          .then((response) => response.blob())
+          .then((blob) => {
+            const link = document.createElement("a");
+            link.href = window.URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          })
+          .catch((error) => console.error('Error downloading image:', error));
+      }
+    
+      // Close modal when clicking outside the image
+      imageModal.addEventListener("click", (event) => {
+        if (event.target === imageModal) {
+          closeModal();
+        }
+>>>>>>> Stashed changes:index.html
       });
     }
 
