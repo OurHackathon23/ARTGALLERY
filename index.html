@@ -282,7 +282,7 @@
     const downloadButton = document.getElementById("download-button");
     let page = 1;
     let selectedCategory = "";
-    const loadedImages = [];
+    const loadedImages = new Set();
 
     function getRandomImageUrl(category = "") {
       let apiUrl = `https://source.unsplash.com/random/800x600`;
@@ -310,30 +310,32 @@
       });
     }
 
-    function loadMoreImages() {
-      const numImagesToLoad = 25; // Adjust the number of images as needed
-
-      for (let i = 0; i < numImagesToLoad; i++) {
-        let imageUrl;
-        do {
-          imageUrl = getRandomImageUrl(selectedCategory);
-        } while (loadedImages.includes(imageUrl));
-
-        displayImage(imageUrl);
-        page++;
+    function loadMoreImages(category) {
+      const numImagesToLoad = 15; // Adjust the number of images as needed
+      let loadedCount = 0;
+  
+      while (loadedCount < numImagesToLoad) {
+        let imageUrl = getRandomImageUrl(category);
+        if (!loadedImages.has(imageUrl)) {
+          displayImage(imageUrl);
+          loadedCount++;
+          page++;
+        }
       }
     }
 
-    function loadRandomImages() {
+    function loadImagesByCategory(category) {
       imageGrid.innerHTML = ""; // Clear grid before loading new images
-      loadedImages.length = 0; // Reset loaded images array
+      loadedImages.clear(); // Reset loaded images Set
       page = 1; // Reset page counter
-      selectedCategory = categorySelector.value;
-      loadMoreImages();
+      loadMoreImages(category);
     }
 
-    function isBottomOfPage() {
-      return window.innerHeight + window.scrollY >= document.body.offsetHeight;
+    function isNearBottomOfPage() {
+      return (
+        window.innerHeight + window.scrollY >=
+        document.body.offsetHeight - 500 // Adjust threshold as needed
+      );
     }
 
     function handleScroll() {
@@ -391,21 +393,19 @@
       downloadImage(imageUrl);
     });
 
+    // Event listeners for each category button
+    loadRandomButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          selectedCategory = button.id;
+          loadImagesByCategory(selectedCategory);
+        });
+      });
+
     // Initial load
-    loadMoreImages();
+    loadImagesByCategory(selectedCategory);
 
-    // Event listeners
-    loadRandomButton.addEventListener("click", loadRandomImages);
-    categorySelector.addEventListener("change", () => {
-      imageGrid.innerHTML = ""; // Clear grid before loading new images
-      loadedImages.length = 0; // Reset loaded images array
-      page = 1; // Reset page counter
-      selectedCategory = categorySelector.value;
-      loadMoreImages();
-    });
-
-    // Infinite scroll
-    window.onscroll = handleScroll;
+    // Scroll event listener for infinite scroll
+    window.addEventListener('scroll', handleScroll);
   });
 </script>
 
