@@ -25,7 +25,10 @@
         </div>
         <div class="nav-search-form">
           <form>
-            <input type="text" placeholder="Search free high-resolution photos">
+            <i class="fa-solid fa-magnifying-glass magnifi"></i>
+            <input type="text" id="searchInput" placeholder=" Search free high-resolution photos">
+            <button onclick="search()">Search</button>
+            <div id="history"></div>
           </form>
         </div>
       </div>
@@ -43,24 +46,22 @@
                 </div>
             </div> -->
             <div class="main_container">
-            <div class="signup_container"><h4 class="sh4"><a href="signup.html">SIGN UP</a></h4></div>
-            <div class="login_container"><h4 class="lh4"><a href="login.html"> LOGIN</a></h4></div>
+            <div class="signup_container"><h4 class="sh4"><a href="files/signup/signup.html">SIGN UP</a></h4></div>
+            <div class="login_container"><h4 class="lh4"><a href="files/login/login.html"> LOGIN</a></h4></div>
             </div>
-            
-          
+
             <div class="manu" id="menu-button">
               <button>
                   <i class="fa-solid fa-bars fa-2xl" style="color: #000000;"></i>
               </button>
             </div>
-                      
-      
-          <!-- Menu overlay -->
-          <div id="menu-overlay"></div>
-          <!-- Menu content -->
-          <div id="menu-content">
+            
+            <!-- Menu overlay -->
+            <div id="menu-overlay"></div>
+             <!-- Menu content -->
+             <div id="menu-content">
               <h2>Menu</h2>
-              <div><a href="meme.html"><button>Memes</button></a></div>
+              <div><a href="files/meme/meme.html"><button>Memes</button></a></div>
               <hr>
               <div><a href="#"><button>COMMUNITY</button></a></div>
               <hr>

@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Random Image Grid</title>
-  <link rel="stylesheet" href="assest/css/styles.css">
+  <link rel="stylesheet" href="../../assest/css/styles.css">
   
-  <link rel="stylesheet" href="assest/font/fontawesome-free-6.4.2-web/css/all.min.css">
+  <link rel="stylesheet" href="../../assest/font/fontawesome-free-6.4.2-web/css/all.min.css">
 
   <style>
     body {
@@ -139,7 +139,7 @@
     <div class="header">
 
         <div class="header_left">
-            <a href="Home.html"><img  src="assest/img/logo.png" alt="logo"></a>
+            <a href="Home.html"><img  src="../../assest/img/logo.png" alt="logo"></a>
             
         </div>
 
@@ -172,7 +172,7 @@
             
             <div id="openBtn"> 
                 <div class="Profile">
-                    <a href="user_profile.html"><img src="assest/img/profile.png" alt="profile_img"></a>
+                    <a href="user_profile.html"><img src="../../assest/img/profile.png" alt="profile_img"></a>
                 </div>
             </div> 
             

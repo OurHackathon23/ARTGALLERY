@@ -5,6 +5,8 @@ body{
     font-family: Arial, sans-serif;
 }
 
+
+
 /* Style the main block */
 .nevbar{
     background-color: rgb(6, 59, 218) ;
@@ -34,14 +36,13 @@ body{
 
 .catagary{
     margin-top: 20px;
-    padding-left: 50px;
+    padding-left: 120px;
     border: 0px;
     height: 50px;
 
 }
 
 .nav-search-form {
-    position: relative;
     margin-left: 0.5rem;
     padding-top: 20px;
 }
@@ -100,16 +101,17 @@ body{
     border: 0px;
     cursor: pointer;
     background-color: #ffffff;
-    margin-left: 40px;
+    margin-left: 220px;
     mix-blend-mode: multiply;
 }
 
 .header_right .Profile img{
-    width: 40px;
+    width: 70px;
     padding-top: 2px;
     background-color: #ffffff;
     cursor: pointer;
     mix-blend-mode: multiply;
+    margin-top: -15px;
 }
 
 .manu{
@@ -129,6 +131,14 @@ body{
     padding-top: 5px;
 
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -158,17 +168,16 @@ body{
 /* Styling for the menu content */
 #menu-content {
     position: fixed;
-    top: 140;
+    top: 60;
     right: -350px; /* Initially hidden on the right side */
     width: 270px;
-    margin-top: 116px ;
-    height: 50%;
+    margin: 60px ;
+    height: 60%;
     background-color: #ffffff;
     color: white;
-    transition: 1s;
+    border-radius:37px ;
     z-index: 3;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border: 2px solid black;
 }
 
 #menu-content.active {
@@ -180,22 +189,20 @@ body{
 }
 
 #menu-content div a button {
-    width: 100%;
+    width: 93%;
     height: 50px;
     outline: none;
-    margin-top: 10px;
-    
+    margin: 10px;
+    border-radius: 25px;
     font-size:x-large ;
-    background-color: rgb(56, 121, 75);
-    color:rgb(255, 255, 255);
-   
+    background-color: green;
+    color:white;
 }
 
 #menu-content div a button:hover{
-    background-color:  rgb(222, 211, 211);
-    color: #333;
+    background-color:  rgb(56, 105, 121);
     outline: none;
-    
+    border: black;
 }
 
 .Sugest_navbar{
@@ -228,6 +235,24 @@ body{
     font-size: xx-large;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .hero {
     background-color: #eee;
     padding: 20px;
@@ -239,6 +264,21 @@ body{
     padding: 20px;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .image-grid {
     display: grid;
@@ -310,188 +350,7 @@ body{
     color: green;
     margin-top: 20px;
   }
-  .loggin_page_signup{
-    text-decoration: none;
-    color: green;
-
-  }
-
-/* Add a new class for blurred images */
-.image-grid img.blur {
-    filter: blur(0px); /* Adjust the blur intensity as needed */
-    transition: filter 0.3s;
-}
-
-/* Adjust the existing .image-grid img:hover style */
-.image-grid img:hover {
-    transform: scale(1.1);
-    filter: blur(0px); /* Add a slight blur effect on hover */
-}
-
-/* Add styles for the login prompt */
-.login-prompt {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    backdrop-filter: blur(0px);
-    z-index: 1000; /* Ensure the prompt appears on top */
-}
-
-.login-prompt a {
-    color: blue;
-    text-decoration: underline;
-}
-.magnifi{
-    position: absolute;
-    left:20px;
-    top:33px;
-}
-.nav-search-form input{
-    padding-left: 60px;
-}
-.nav-search-form button{
-    border-radius: 25px;
-    background-color: green;
-    color: #ffffff;
-    outline: none;
-    width: 90px;
-    height: 40px;
-    border: none;
-    font-size: medium;
-}
-.nav-search-form button:hover{
-    
-    background-color: #333;
-}
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    text-align: center;
-}
-
-#history {
-    margin-top: 20px;
-    border-top: 1px solid #ddd;
-    padding-top: 20px;
-}
+ 
+ 
 
  
-/*for media qurey*/
-.main2_container{
-    background-color: #eee;
-    border-radius: 25px;
-    width: 200px;
-    height: 40px;
-    margin-top: 40px;
-    margin-left: 40px;
-    display:none;
-}
-.main2_container .signup2_container a{
-    text-decoration:none;
-    color:#333;
-  }
-  .main2_container .login2_container a{
-    text-decoration: none;
-    color:#fff;
-  }
-  .login2_container{
-    background-color:green;
-    border-radius: 25px;
-    color: #eee;
-    height:40px;
-    margin-top: -59px;
-    margin-left: 100px;
-    padding-left: 30px;
-  }
-
-.signup2_container{
-  border-radius: 25px;
-  
-  height: 37px;
-  
-  width: 80px;
-  margin-top: -20px;
-  padding-left: 30px;
-  text-decoration: none;
-  
-}
-.header_left2{
-    display: none;
-}
-
- @media only screen and (max-width: 320px){
-  .s{
-    overflow-x: scroll;
-    position:fixed;
-    
-  } 
-
-.nav-search-form input{
-    width: 90px;
-    
-} 
-.nav-search-form{
-    margin-left: -30px;
-}
-.nav-search-form button{
-    display: none;
-} 
-.header_left{
-    display: none;
-}
-.nevbar{
-    position: fixed;
-    background-color: #000000;
-}
-.header_right .file_post button{
-    display: none;
-}
-#category-selector {
-    display: none;
-}
-.main2_container{
-    display:block;
-}
-.signup_container{
-    display:none;
-}
-.login_container{
-    display:none;
-}
-
-.image-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 10px;
-    background-color: black;
-    overflow-y: scroll;
-  }
-  
-  .image-grid-item {
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    position: relative;
-    overflow: scroll;
-  }
-  
-  .image-grid-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-.header_left2{
-    display: block;
-}
-.header_right .manu button{
-    margin-top: -20px;
-}
-}

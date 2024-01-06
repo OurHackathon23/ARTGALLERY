@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-// Check if user is logged in
-if (!isset($_SESSION['user_details'])) {
-    header("Location: login.php");
-    exit;
-}
-
-$user = $_SESSION['user_details'];
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,10 +63,10 @@ $user = $_SESSION['user_details'];
 
 <!-- Display User Details -->
 <div class="user-details">
-    <strong>Name:</strong> <?php echo $user['name']; ?><br>
+    <strong>Name:</strong> <?php echo $user['username']; ?><br>
     <strong>Mobile No:</strong> <?php echo $user['mobile']; ?><br>
     <strong>Email:</strong> <?php echo $user['email']; ?><br>
-    <a href="logout.php" style="float: right; background-color: #d9534f;">Logout</a>
+    <a href="../login/logout.php" style="margin-left: 20px; margin-top:15px;background-color:  #d9534f;">Logout</a>
 </div>
 
 
