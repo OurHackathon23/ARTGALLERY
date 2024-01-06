@@ -95,10 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // Show login prompt in the modal
         modalContent.innerHTML = `
         <div class="login-prompt">
-        <p>Please <a href="login.html">login</a> to download this image.</p>
-  </div>
-  <img id="modal-image" src="${imageUrl}" alt="Enlarged Image">
-`;
+        <p>Please <a href="login.html">login</a> to download this image.</p></div>
+        <img id="modal-image" src="${imageUrl}" alt="Enlarged Image">`;
       }
     
       function closeModal() {
