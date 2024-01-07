@@ -59,8 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
       function isNearBottomOfPage() {
         return (
-          window.innerHeight + window.scrollY >=
-          document.body.offsetHeight - 500 // Adjust threshold as needed
+          window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 // Adjust threshold as needed
         );
       }
     
@@ -76,7 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
     
         // Reset scroll position when opening the modal
         modalContent.scrollTop = 0;
-      }
+        
+        // Disable right-click on the modal image
+        modalImage.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+        });
+
+        // Disable left-click on the modal image
+        modalImage.addEventListener('click', function(e) {
+          e.preventDefault();
+        });
+
+        // Add blur effect to the clicked image
+        document.querySelectorAll(".image-grid img").forEach(img => {
+          img.classList.remove('selected');  // Remove 'selected' from all images
+        });
+        
+    }
     
       function closeModal() {
         imageModal.style.display = "none";
