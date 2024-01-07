@@ -59,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
       function isNearBottomOfPage() {
         return (
-          window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 // Adjust threshold as needed
+          window.innerHeight + window.scrollY >=
+          document.body.offsetHeight - 500 // Adjust threshold as needed
         );
       }
     
@@ -75,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     
         // Reset scroll position when opening the modal
         modalContent.scrollTop = 0;
-        
       }
     
       function closeModal() {
