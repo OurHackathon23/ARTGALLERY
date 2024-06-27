@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const loadedImages = new Set();
     
       function getRandomImageUrl(category = "") {
-        let apiUrl = `https://source.unsplash.com/random/800x600`;
+        let apiUrl = `https://picsum.photos/300/200?random`;
     
         if (category) {
           apiUrl += `?${category}`;
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     
       function loadMoreImages(category) {
-        const numImagesToLoad = 15; // Adjust the number of images as needed
+        const numImagesToLoad = 20; // Adjust the number of images as needed
         let loadedCount = 0;
     
         while (loadedCount < numImagesToLoad) {
@@ -160,11 +160,13 @@ document.addEventListener("DOMContentLoaded", () => {
  const menuContent = document.getElementById('menu-content');
  
     menuButton.addEventListener('click', () => {
-    menuOverlay.style.display = 'block';
-    menuContent.classList.add('active');
+      menuOverlay.style.display = 'block';
+      menuContent.style.display = 'block';
+      menuContent.classList.add('active');
     });
 
     menuOverlay.addEventListener('click', () => {
     menuOverlay.style.display = 'none';
+    menuContent.style.display = 'none';
     menuContent.classList.remove('active');
       });

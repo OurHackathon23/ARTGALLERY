@@ -53,7 +53,7 @@ function loadRandomImages() {
 }
 
 function getRandomImageUrl(category = "") {
-    let apiUrl = `https://source.unsplash.com/random/800x600`;
+    let apiUrl = `https://picsum.photos/300/200?random`;
 
     if (category) {
         apiUrl += `?${category}`;

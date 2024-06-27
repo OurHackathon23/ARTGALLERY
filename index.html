@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,13 +10,14 @@
   <link rel="stylesheet" href="assest/css/image.css">
   <link rel="stylesheet" href="assest/font/fontawesome-free-6.4.2-web/css/all.min.css">
 </head>
+
 <body>
   <div class="nevbar">
     <div class="header">
       <div class="header_left">
-        <a href="index.html"><img  src="assest/img/logo.png" alt="logo"></a>
+        <a href="index.html"><img src="assest/img/logo.png" alt="logo"></a>
       </div>
-      <div class="header_middel"> 
+      <div class="header_middel">
         <div class="catagary">
           <select id="category-selector">
             <option value="">All</option>
@@ -26,7 +28,7 @@
         </div>
         <div class="nav-search-form">
           <form>
-            <i class="fa-solid fa-magnifying-glass magnifi"></i>
+            <i class="fa-solid fa-magnifying-glass magnifi" style="color:rgb(129, 124, 124);"></i>
             <input type="text" id="searchInput" placeholder=" Search free high-resolution photos">
             <button onclick="search()">Search</button>
             <div id="history"></div>
@@ -34,83 +36,69 @@
         </div>
       </div>
       <div class="header_right">
-
-            <div class="file_post">
+        <!-- <div class="file_post">
                 <button>
                     <i class="fa-solid fa-plus fa-2xl" style="color:rgb(25, 98, 122);"></i>
                 </button>
-            </div> 
-            <!--
+            </div>  -->
+        <!--
             <div id="openBtn"> 
                 <div class="Profile">
                     <a href="login.php"><img src="assest/img/profile.png" alt="profile_img"></a>
                 </div>
             </div> -->
-            <div class="main_container">
-            <div class="signup_container"><h4 class="sh4"><a href="files/signup/signup.html">SIGN UP</a></h4></div>
-            <div class="login_container"><h4 class="lh4"><a href="files/login/login.html"> LOGIN</a></h4></div>
-            </div>
-
-            <div class="manu" id="menu-button">
-              <button>
-                  <i class="fa-solid fa-bars fa-2xl" style="color: #000000;"></i>
-              </button>
-            </div>
-            
-            <!-- Menu overlay -->
-            <div id="menu-overlay"></div>
-             <!-- Menu content -->
-             <div id="menu-content">
-              <h2>Menu</h2>
-              <div><a href="files/meme/meme.html"><button>Memes</button></a></div>
-              <hr>
-              <div><a href="#"><button>COMMUNITY</button></a></div>
-              <hr>
-              <div><a href="#"><button>WALLPAPER</button></a></div>
-              <hr>
-              <div><a href="#"><button>FAVOURITES</button></a></div>
-
+        <div class="main_container">
+          <div class="signup_container">
+            <h4 class="sh4"><a href="files/signup/signup.html">SIGN UP</a></h4>
           </div>
-          <script src="assest/js/image.js">
-          </script>
+          <div class="login_container">
+            <h4 class="lh4"><a href="files/login/login.html"> LOGIN</a></h4>
+          </div>
         </div>
+        <div class="manu" id="menu-button">
+          <button>
+            <i class="fa-solid fa-bars fa-2xl" style="color: #000000;"></i>
+          </button>
+        </div>
+        <!-- Menu overlay -->
+        <div id="menu-overlay"></div>
+        <!-- Menu content -->
+        <div id="menu-content">
+          <h2>Menu</h2>
+          <div><a href="files/meme/meme.html"><button>Memes</button></a></div>
+          <hr>
+          <div><a href="./blog/index.php"><button>Blogs</button></a></div>
+          <hr>
+          <div><a href="#"><button>COMMUNITY</button></a></div>
+          <hr>
+          <div><a href="#"><button>WALLPAPER</button></a></div>
+          <hr>
+          <div><a href="#"><button>FAVOURITES</button></a></div>
+        </div>
+        <script src="assest/js/image.js">
+        </script>
+      </div>
     </div>
   </div>
   <div class="s">
     <button class="load-random " id="load-random">New Images</button>
-    
     <button class="load-random" id="nature">Nature</button>
-    
     <button class="load-random " id="architecture">Architecture</button>
-    
     <button class="load-random " id="people">People</button>
-    <p class="s-1">  |  </p>
     <button class="load-random " id="lifestyle">Lifestyle</button>
-    
     <button class="load-random " id="sports">Sports</button>
-    
     <button class="load-random " id="cars">Cars</button>
-
     <button class="load-random " id="Street Photography">Street Photography</button>
-    
     <button class="load-random " id="bikes">Bikes</button>
-    
     <button class="load-random " id="birds">Birds</button>
-    
     <button class="load-random " id="horse">Horse</button>
-
     <button class="load-random " id="3D-modal">3D Modal</button>
-
     <button class="load-random " id="travel">Travel</button>
-    
     <button class="load-random " id="indian-Culture-temple">Indian Culture</button>
-    
     <button class="load-random " id="Houses">Houses</button>
-    
   </div>
-
   <div class="image-grid" id="image-grid"></div>
-
+  <!-- <div class="image-grid" id="gallery"></div> -->
   <div class="modal" id="image-modal">
     <div class="modal-content">
       <button class="back-button" id="back-button">&lt; Back</button>
@@ -118,7 +106,7 @@
       <button class="download-button" id="download-button">Download</button>
     </div>
   </div>
-
   <script src="assest/js/image.js"> </script>
 </body>
+
 </html>
